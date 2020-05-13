@@ -6,7 +6,7 @@ async function logoutUser() {
     axios.defaults.headers.common['Authorization'] = `Bearer${token}`
 const result =   await axios({
      method: 'post',
-     url: '/users/logout'
+     url: 'https://navjot-task-app.herokuapp.com/users/logout'
    })
    return result
 }

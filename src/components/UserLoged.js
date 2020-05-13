@@ -29,7 +29,7 @@ componentDidMount(){
 
 fetchUser(){
   const token = Cookies.get('user')
-  const url ="/users/me"
+  const url ="https://navjot-task-app.herokuapp.com/users/me"
   const data =  fetch(url, 
     {method:'GET',
      headers: {'Authorization': `Bearer${token}`}
@@ -40,12 +40,8 @@ fetchUser(){
 
 
 fetchTask(){
-  // TaskFetch().then(result => result.json())
-  // .then((result=> this.setState({'tasks':result})))
-  // .catch(error=>console.log("error"+error))
-
     const token = Cookies.get('user')
-  const url ="/tasks"
+  const url ="https://navjot-task-app.herokuapp.com/tasks"
   const data =  fetch(url, 
     {method:'GET',
      headers: {'Authorization': `Bearer${token}`}
@@ -75,7 +71,7 @@ taskCompleted=(id,event)=>{
   axios.defaults.headers.common['Authorization'] = `Bearer${token}`
   axios({
    method: 'patch',
-   url: '/tasks/'+id,
+   url: 'https://navjot-task-app.herokuapp.com/tasks/'+id,
    data: {
     completed:event.target.checked
    }

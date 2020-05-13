@@ -34,7 +34,7 @@ createUser=()=>{
     const {name,email,password}= this.state
   axios({
         method: 'post',
-        url: '/users',
+        url: 'https://navjot-task-app.herokuapp.com/users',
         data: {
           name:name,
           email:email,
@@ -75,7 +75,7 @@ createUser=()=>{
     const {email,password}= this.state
     await axios({
       method: 'post',
-      url: '/users/login',
+      url: 'https://navjot-task-app.herokuapp.com/users/login',
       data: {
         email:email,
         password:password
@@ -84,7 +84,7 @@ createUser=()=>{
       Cookies.set('user',res.data.token)
       const token = Cookies.get('user')
       return axios.defaults.headers.common['Authorization'] = `Bearer${token}` //sending token in header
-    }).then(()=>axios.get('/users/me'))
+    }).then(()=>axios.get('https://navjot-task-app.herokuapp.com/users/me'))
       .then(()=>window.location.reload(true))
       .catch((error)=>console.log(error));
 }

@@ -7,7 +7,7 @@ import Cookies from 'js-cookie'
     axios.defaults.headers.common['Authorization'] = `Bearer${token}`
     await axios({
       method: 'delete',
-      url: '/tasks/'+id,
+      url: 'https://navjot-task-app.herokuapp.com/tasks/'+id,
     })
 }
 
@@ -16,7 +16,7 @@ export async function completTask(id,event){
   axios.defaults.headers.common['Authorization'] = `Bearer${token}`
   axios({
    method: 'patch',
-   url: '/tasks/'+id,
+   url: 'https://navjot-task-app.herokuapp.com/tasks/'+id,
    data: {
     completed:event.target.checked
    }
@@ -28,7 +28,7 @@ const token = Cookies.get('user')
 axios.defaults.headers.common['Authorization'] = `Bearer${token}`
 await axios({
   method: 'post',
-  url: '/tasks',
+  url: 'https://navjot-task-app.herokuapp.com/tasks',
   data: {
    description:task
   }
@@ -37,7 +37,7 @@ await axios({
 
 export async function TaskFetch(){
   const token = Cookies.get('user')
-  const url ="/tasks"
+  const url ="https://navjot-task-app.herokuapp.com/tasks"
   const data = await fetch(url, 
     {method:'GET',
      headers: {'Authorization': `Bearer${token}`}

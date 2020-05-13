@@ -9,6 +9,7 @@
     "axios": "^0.18.1",
     "bootstrap": "^4.4.1",
     "express": "^4.17.1",
+    "express-favicon": "^2.0.1",
     "fetch-defaults": "^1.0.0",
     "js-cookie": "^2.2.1",
     "prop-types": "^15.7.2",
@@ -16,10 +17,11 @@
     "react-bootstrap": "^1.0.1",
     "react-dom": "^16.13.1",
     "react-router": "^5.2.0",
-    "react-scripts": "3.4.1"
+    "react-scripts": "3.4.1",
+    "serve-favicon": "^2.5.0"
   },
   "scripts": {
-    "start": "npm start",
+    "start": "node server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

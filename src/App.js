@@ -17,7 +17,7 @@ class App extends Component{
   checkUserLoged(){
     const token = Cookies.get('user')
     axios.defaults.headers.common['Authorization'] = `Bearer${token}`
-    const url ="/users/me"
+    const url ="https://navjot-task-app.herokuapp.com/users/me"
     axios.get(url)
   .then((res=>this.setState({visible:true})))
   .catch((error=>this.setState({visible:false})))
