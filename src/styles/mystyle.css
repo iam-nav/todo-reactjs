@@ -1,0 +1,163 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.registerForm{
+    width: 700px;
+    margin-left: 20%;
+    margin-top: 3%;
+    margin-bottom: 10px;
+    border: 2px solid gray;
+    padding: 30px;
+    border-radius: 15px;
+    background-color: white;
+   
+}
+#welcome_register{
+    font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
+   text-align: left;
+}
+footer {
+    position: fixed;
+    margin-top: 10px;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color:#343A40;
+    text-align: center;
+ }
+#footer{
+color: violet;
+text-align: right;
+margin-right: 50px;
+ }
+
+ #tasks{
+     text-transform: capitalize;
+     color: #343A40;
+     float: left;
+     margin-left: 15px;
+     font-family:'Times New Roman', Times, serif;
+     font-weight: bold;
+     
+ }
+ .tasks{
+     background-color: blue;
+ }
+   #xbutton{
+       background-color: #FF494C;
+       border: #FF494C;
+       height: 30px;
+       width: 30px;
+       color: white;
+   }
+   #ul{
+    list-style:none;
+   
+   }
+
+   .TaskComplete{
+    text-decoration: line-through;
+    text-decoration-color: #FF494C;
+   }
+   .NotCompleteTask{
+    text-decoration: none;
+   }
+   .list{
+   overflow: auto;
+   height: 400px;
+   width: 40%; 
+   margin-left: 410px;
+   }
+   .list::-webkit-scrollbar {
+    display: none;
+}
+
+.btnSignup{
+    margin-left: -60%;
+    padding:8px 40px 8px 40px;
+}
+.btnLogin{
+    margin-Left:10px;
+    padding:8px 40px 8px 40px;
+}
+
+.name_signup{
+    margin-Left:-93%
+    
+    }
+.email_signup{
+    margin-Left:-93%
+}
+.pass_signup{
+margin-Left:-90%
+}
+.login_email{
+    margin-Left:-93%
+}
+.login_pass{
+margin-Left:-90%
+}
+.btn_logout{
+margin-Right:50px
+}
+.taskbar{
+width:500px;
+margin-Left:410px;
+}
+@media only screen and (max-width:375px){
+    
+.registerForm{
+    width: 300px;
+    margin-left: 10%;
+    margin-top: 17%;
+    border: 2px solid gray;
+    padding: 30px;
+    border-radius: 15px;
+    background-color: white;
+   
+}
+.btnSignup{
+    margin-left: -7%;
+    padding:4px 40px 8px 30px;
+}
+.btnLogin{
+    margin-Left:10px;
+    padding:4px 40px 8px 30px;
+}
+
+.name_signup{
+    margin-Left:-80%   
+}
+.email_signup{
+    margin-Left:-80%
+}
+.pass_signup{
+margin-Left:-70%
+}
+
+.login_email{
+    margin-Left:-84%
+}
+.login_pass{
+margin-Left:-70%
+}
+
+.btn_logout{
+    margin-Right:37px
+}
+
+.taskbar{
+    width:350px;
+    margin-Left:10px;
+}
+
+
+.list{
+    overflow: auto;
+    height: 400px;
+    width: 98%; 
+    margin-left: 10px;
+    }
+
+}

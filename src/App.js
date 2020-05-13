@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import Header from './components/header'
+import Footer from './components/footer'
+import Register_form from './components/Register_form'
+import UserLoged from './components/UserLoged'
+import Cookies from 'js-cookie'
+import axios from 'axios'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component{
+  state={
+    visible:false
+  }
+  componentDidMount(){
+    this.checkUserLoged()
+  }
+  checkUserLoged(){
+    const token = Cookies.get('user')
+    axios.defaults.headers.common['Authorization'] = `Bearer${token}`
+    const url ="http://localhost:3001/users/me"
+    axios.get(url)
+  .then((res=>this.setState({visible:true})))
+  .catch((error=>this.setState({visible:false})))
+  }
+  
+  render(){
+    return(
+      <div className="App">
+      <Header></Header>
+      {this.state.visible ? <UserLoged></UserLoged>: <Register_form></Register_form>}   
+      <Footer />
+      </div>
+    )
+  }
 }
 
 export default App;
