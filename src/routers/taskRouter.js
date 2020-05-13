@@ -2,25 +2,12 @@ import React from 'react'
 import axios from 'axios'
 import Cookies from 'js-cookie'
 
-
-// export function fetchTask(){
-//     const token = Cookies.get('user')
-//   const url ="http://localhost:3001/tasks"
-//   const data =  fetch(url, 
-//     {method:'GET',
-//      headers: {'Authorization': `Bearer${token}`}
-//     }).then(result => result.json())
-//     .then((result=> this.setState({'tasks':result})))
-//     .catch(error=>console.log("error"+error))
-// }
-
-
  export async function deleteTask(id){
     const token = Cookies.get('user')
     axios.defaults.headers.common['Authorization'] = `Bearer${token}`
     await axios({
       method: 'delete',
-      url: 'http://localhost:3001/tasks/'+id,
+      url: '/tasks/'+id,
     })
 }
 
@@ -29,7 +16,7 @@ export async function completTask(id,event){
   axios.defaults.headers.common['Authorization'] = `Bearer${token}`
   axios({
    method: 'patch',
-   url: 'http://localhost:3001/tasks/'+id,
+   url: '/tasks/'+id,
    data: {
     completed:event.target.checked
    }
@@ -41,7 +28,7 @@ const token = Cookies.get('user')
 axios.defaults.headers.common['Authorization'] = `Bearer${token}`
 await axios({
   method: 'post',
-  url: 'http://localhost:3001/tasks',
+  url: '/tasks',
   data: {
    description:task
   }
@@ -50,7 +37,7 @@ await axios({
 
 export async function TaskFetch(){
   const token = Cookies.get('user')
-  const url ="http://localhost:3001/tasks"
+  const url ="/tasks"
   const data = await fetch(url, 
     {method:'GET',
      headers: {'Authorization': `Bearer${token}`}

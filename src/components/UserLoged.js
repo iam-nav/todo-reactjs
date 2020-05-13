@@ -29,7 +29,7 @@ componentDidMount(){
 
 fetchUser(){
   const token = Cookies.get('user')
-  const url ="http://localhost:3001/users/me"
+  const url ="/users/me"
   const data =  fetch(url, 
     {method:'GET',
      headers: {'Authorization': `Bearer${token}`}
@@ -45,7 +45,7 @@ fetchTask(){
   // .catch(error=>console.log("error"+error))
 
     const token = Cookies.get('user')
-  const url ="http://localhost:3001/tasks"
+  const url ="/tasks"
   const data =  fetch(url, 
     {method:'GET',
      headers: {'Authorization': `Bearer${token}`}
@@ -75,7 +75,7 @@ taskCompleted=(id,event)=>{
   axios.defaults.headers.common['Authorization'] = `Bearer${token}`
   axios({
    method: 'patch',
-   url: 'http://localhost:3001/tasks/'+id,
+   url: '/tasks/'+id,
    data: {
     completed:event.target.checked
    }

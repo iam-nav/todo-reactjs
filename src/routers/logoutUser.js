@@ -6,7 +6,7 @@ async function logoutUser() {
     axios.defaults.headers.common['Authorization'] = `Bearer${token}`
 const result =   await axios({
      method: 'post',
-     url: 'http://localhost:3001/users/logout'
+     url: '/users/logout'
    })
    return result
 }

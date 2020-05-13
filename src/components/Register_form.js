@@ -34,7 +34,7 @@ createUser=()=>{
     const {name,email,password}= this.state
   axios({
         method: 'post',
-        url: 'http://localhost:3001/users',
+        url: '/users',
         data: {
           name:name,
           email:email,
@@ -75,7 +75,7 @@ createUser=()=>{
     const {email,password}= this.state
     await axios({
       method: 'post',
-      url: 'http://localhost:3001/users/login',
+      url: '/users/login',
       data: {
         email:email,
         password:password
@@ -84,7 +84,7 @@ createUser=()=>{
       Cookies.set('user',res.data.token)
       const token = Cookies.get('user')
       return axios.defaults.headers.common['Authorization'] = `Bearer${token}` //sending token in header
-    }).then(()=>axios.get('http://localhost:3001/users/me'))
+    }).then(()=>axios.get('/users/me'))
       .then(()=>window.location.reload(true))
       .catch((error)=>console.log(error));
 }

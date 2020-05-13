@@ -17,7 +17,7 @@ class App extends Component{
   checkUserLoged(){
     const token = Cookies.get('user')
     axios.defaults.headers.common['Authorization'] = `Bearer${token}`
-    const url ="http://localhost:3001/users/me"
+    const url ="/users/me"
     axios.get(url)
   .then((res=>this.setState({visible:true})))
   .catch((error=>this.setState({visible:false})))
