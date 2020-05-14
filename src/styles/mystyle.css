@@ -183,12 +183,37 @@ margin-Left:-70%
     margin-Left:10px;
 }
 
-
 .list{
     overflow: auto;
     height: 400px;
     width: 98%; 
     margin-left: 10px;
     }
+
+    .listSpinner{
+        position: relative;
+        overflow: auto;
+        height: 400px;
+        width: 98%; 
+        margin-left: 10px;
+        filter: blur(2px);
+       }
+    
+    
+       .spinner{
+       position: absolute;
+       justify-Content:center;
+       z-index: 100;
+       margin-left: -2%;
+       margin-top: 24%;
+       }
+       .spinnerSmall{
+        position: absolute;
+        justify-Content:center;
+        z-index: 100;
+        margin-left: -6%;
+        margin-top: 25.9%;
+        }
+    
 
 }
