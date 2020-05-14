@@ -64,10 +64,41 @@ margin-right: 50px;
     text-decoration: none;
    }
    .list{
+   position: relative;
    overflow: auto;
    height: 400px;
    width: 40%; 
    margin-left: 410px;
+   }
+
+   .listSpinner{
+    position: relative;
+    overflow: auto;
+    height: 400px;
+    width: 40%; 
+    margin-left: 410px;
+    filter: blur(2px);
+   }
+
+
+   .spinner{
+   position: absolute;
+   justify-Content:center;
+   z-index: 100;
+   margin-left: 2%;
+   margin-top: 10%;
+   }
+   .spinnerSmall{
+    position: absolute;
+    justify-Content:center;
+    z-index: 100;
+    margin-left: 0.5%;
+    margin-top: 10.9%;
+    }
+
+   .text-block{
+       top: 100px;
+       position: absolute;
    }
    .list::-webkit-scrollbar {
     display: none;

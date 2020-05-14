@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Button,Form,Alert} from 'react-bootstrap';
+import {Button,Form,Alert,Spinner} from 'react-bootstrap';
 import axios from 'axios';
 import '../styles/mystyle.css'
 import UserLoged from './UserLoged'
@@ -22,7 +22,11 @@ constructor(props) {
          password:'',
          isvisible:true,
          errorMessage:'',
-    }
+         loginSpinner:true,
+         loginBtn:false,
+         RegisterSpinner:true,
+         RegisterBtn:false
+        }
 }
 handle_data=(event)=>{
         this.setState({
@@ -31,6 +35,10 @@ handle_data=(event)=>{
     }
 
 createUser=()=>{
+  this.setState({
+    RegisterBtn:true,
+    RegisterSpinner:false
+  })
     const {name,email,password}= this.state
   axios({
         method: 'post',
@@ -46,7 +54,9 @@ createUser=()=>{
       }).catch((e)=>{
         this.setState({
           isvisible:false,
-          errorMessage:e.response.data.messageValidation
+          errorMessage:e.response.data.messageValidation,
+          RegisterBtn:false,
+          RegisterSpinner:true
         })
       })
 }
@@ -72,6 +82,11 @@ createUser=()=>{
 
 
   login_user=async()=>{
+    this.setState({
+      loginBtn:true,
+      loginSpinner:false
+    })
+
     const {email,password}= this.state
     await axios({
       method: 'post',
@@ -86,9 +101,15 @@ createUser=()=>{
       return axios.defaults.headers.common['Authorization'] = `Bearer${token}` //sending token in header
     }).then(()=>axios.get('https://navjot-task-app.herokuapp.com/users/me'))
       .then(()=>window.location.reload(true))
-      .catch((error)=>console.log(error));
-}
-
+      .catch((e)=>{
+      this.setState({
+        isvisible:false,
+        errorMessage:e.response.data,
+        loginBtn:false,
+        loginSpinner:true
+      })
+    })
+    }
 
     render(){
         return(
@@ -113,8 +134,19 @@ createUser=()=>{
     <Form.Label className="pass_signup" >Password</Form.Label>
     <Form.Control name="password" type="password" value={this.state.password} onChange={this.handle_data} placeholder="Password" />
   </Form.Group>
-  <Button variant="primary" onClick={this.createUser}>
+  <Button variant="primary" onClick={this.createUser} hidden={this.state.RegisterBtn}>
     Register
+  </Button>
+    {/* spinner  */}
+  <Button variant="primary" disabled hidden={this.state.RegisterSpinner}>
+    <Spinner
+      as="span"
+      animation="grow"
+      size="sm"
+      role="status"
+      aria-hidden="true"
+    />
+    Loading...
   </Button>
 </Form>
 
@@ -129,8 +161,19 @@ createUser=()=>{
     <Form.Label className="login_pass" >Password</Form.Label>
     <Form.Control name="password" type="password" value={this.state.password}  onChange={this.handle_data} placeholder="Password" />
   </Form.Group>
-  <Button variant="primary" onClick={this.login_user} >
+  <Button variant="primary" onClick={this.login_user}  hidden={this.state.loginBtn}>
     Login
+  </Button>
+  {/* spinner  */}
+  <Button variant="primary" disabled hidden={this.state.loginSpinner}>
+    <Spinner
+      as="span"
+      animation="grow"
+      size="sm"
+      role="status"
+      aria-hidden="true"
+    />
+    Loading...
   </Button>
 </Form>
 
